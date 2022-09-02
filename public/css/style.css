@@ -1,0 +1,33 @@
+body {
+    background: #ffffff;
+    /* #fafafa; #f7f4f4 */
+    color: #2f3e5c;
+    /* #333333;*/
+    margin-top: 5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #444444;
+}
+
+.bg-steel {
+    background-color: #327dc3;
+    /*#5f788a;*/
+}
+
+.site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+}

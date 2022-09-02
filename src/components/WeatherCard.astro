@@ -1,0 +1,41 @@
+---
+import cacheData from "memory-cache";
+
+export interface Props {
+	city: string;
+}
+
+const { city } = Astro.props;
+
+async function fetchWithCache(url: string, mins: number) {
+	const value = cacheData.get(url);
+	if (value) {
+		console.log("Value loaded from cache.");
+		return value;
+	} else {
+		const res = await fetch(url);
+		const data = await res.json();
+		cacheData.put(url, data, mins * 1000 * 60);
+		console.log("Cache generated.");
+		return data;
+	}
+}
+
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},de&units=metric&APPID=${
+	import.meta.env.API_KEY
+}`;
+const min = 5;
+const data = await fetchWithCache(url, min);
+
+const condition = data["weather"][0]["description"];
+
+const temperature: number = data["main"]["temp"];
+---
+
+<>
+	<h2 class="pt-3">Weather in {city}</h2>
+
+	<div class="weather_info text-center h2">
+		{condition} &hellip; {temperature.toFixed(1)} °C
+	</div>
+</>
