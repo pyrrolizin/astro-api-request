@@ -1,5 +1,5 @@
 {
-  "name": "@example/basics",
+  "name": "@pyrrolizin/astro-api-request",
   "version": "0.0.1",
   "private": true,
   "scripts": {
